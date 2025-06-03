@@ -6,7 +6,7 @@ import 'vuetify/styles'
 import { createVuetify } from 'vuetify'
 import * as components from 'vuetify/components'
 import * as directives from 'vuetify/directives'
-import 'cesium/Build/Cesium/Widgets/widgets.css'
+import '@cesium/widgets/Source/widgets.css'
 
 const vuetify = createVuetify({
   components,

@@ -1,6 +1,8 @@
 <template>
   <v-app>
-    <router-view></router-view>
+    <v-main>
+      <router-view></router-view>
+    </v-main>
   </v-app>
 </template>
 
@@ -13,10 +15,19 @@ html, body {
   margin: 0;
   padding: 0;
   height: 100%;
-  font-family: 'Roboto', sans-serif;
+  overflow: hidden;
 }
 
-#app {
-  height: 100%;
+.v-application {
+  height: 100vh !important;
+}
+
+.v-main {
+  height: 100vh !important;
+  padding: 0 !important;
+}
+
+.v-main__wrap {
+  height: 100vh !important;
 }
 </style>

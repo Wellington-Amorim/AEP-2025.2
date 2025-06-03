@@ -11,7 +11,10 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
+    "@cesium/engine": "^18.0.0",
+    "@cesium/widgets": "^12.1.0",
     "pinia": "^3.0.1",
+    "vite-plugin-cesium": "^1.2.23",
     "vue": "^3.4.21",
     "vue-router": "^4.5.0",
     "vuetify": "^3.5.9"
