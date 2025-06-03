@@ -1,7 +1,22 @@
 import { createApp } from 'vue'
+import { createPinia } from 'pinia'
 import App from './App.vue'
-import router from './router'      // <<< importe o router
+import router from './router'
+import 'vuetify/styles'
+import { createVuetify } from 'vuetify'
+import * as components from 'vuetify/components'
+import * as directives from 'vuetify/directives'
+import 'cesium/Build/Cesium/Widgets/widgets.css'
 
-import 'cesium/Build/Cesium/Widgets/widgets.css' // se ainda não importou o CSS do Cesium
+const vuetify = createVuetify({
+  components,
+  directives,
+})
 
-createApp(App).use(router).mount('#app')
+const pinia = createPinia()
+const app = createApp(App)
+
+app.use(pinia)
+app.use(router)
+app.use(vuetify)
+app.mount('#app')

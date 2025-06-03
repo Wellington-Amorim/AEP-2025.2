@@ -1,10 +1,17 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
-import cesium from 'vite-plugin-cesium'
 
 export default defineConfig({
-  plugins: [vue(), cesium()],
+  plugins: [vue()],
   define: {
-    CESIUM_BASE_URL: JSON.stringify('/cesium')
+    'process.env': {}
+  },
+  resolve: {
+    alias: {
+      '@': '/src'
+    }
+  },
+  server: {
+    open: true
   }
 })

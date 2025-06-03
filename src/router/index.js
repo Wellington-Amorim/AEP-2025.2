@@ -1,15 +1,33 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home.vue'
-import Mapa from '../views/Mapa.vue'
-import Simulador from '../views/Simulador.vue'
+import Simulacao from '../views/Simulacao.vue'
+import Dados from '../views/Dados.vue'
+import Sobre from '../views/Sobre.vue'
 
-const routes = [
-  { path: '/',           name: 'Home',      component: Home },
-  { path: '/mapa',       name: 'Mapa',      component: Mapa },
-  { path: '/simulador',  name: 'Simulador', component: Simulador }
-]
-
-export default createRouter({
-  history: createWebHistory(),
-  routes
+const router = createRouter({
+  history: createWebHistory(import.meta.env.BASE_URL),
+  routes: [
+    {
+      path: '/',
+      name: 'home',
+      component: Home
+    },
+    {
+      path: '/simulacao',
+      name: 'simulacao',
+      component: Simulacao
+    },
+    {
+      path: '/dados',
+      name: 'dados',
+      component: Dados
+    },
+    {
+      path: '/sobre',
+      name: 'sobre',
+      component: Sobre
+    }
+  ]
 })
+
+export default router
