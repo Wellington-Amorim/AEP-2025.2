@@ -1,13 +1,19 @@
 <template>
   <div id="cesiumContainer">
-    <v-btn
-      class="back-button"
-      color="primary"
-      icon="mdi-arrow-left"
-      size="large"
-      @click="$router.push('/')"
-    >
-    </v-btn>
+    <!-- Navbar -->
+    <v-row class="header-row">
+      <v-col cols="12" class="d-flex align-center">
+        <v-btn
+          color="primary"
+          icon="mdi-arrow-left"
+          size="large"
+          @click="$router.push('/')"
+          class="mr-4"
+        >
+        </v-btn>
+        <h1 class="text-h4">Simulação</h1>
+      </v-col>
+    </v-row>
   </div>
 </template>
 
@@ -83,11 +89,27 @@ html, body, #app {
   background: white;
 }
 
-.back-button {
+.header-row {
   position: fixed !important;
-  top: 20px;
-  left: 20px;
+  top: 0;
+  left: 0;
+  right: 0;
   z-index: 1000;
+  background: rgba(255, 255, 255, 0.8) !important;
+  backdrop-filter: blur(10px);
+  padding: 0.5rem 1rem !important;
+  margin: 0 !important;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.text-h4 {
+  margin: 0;
+  font-weight: 500;
+  font-size: 1.5rem !important;
+  color: rgba(0, 0, 0, 0.87);
 }
 
 .cesium-viewer-toolbar,
@@ -110,5 +132,14 @@ html, body, #app {
 /* Ajustes para modo 2D */
 .cesium-viewer-transitioner {
   display: none !important;
+}
+
+/* Ajustes para botão de voltar */
+.v-btn {
+  opacity: 0.9;
+}
+
+.v-btn:hover {
+  opacity: 1;
 }
 </style>
