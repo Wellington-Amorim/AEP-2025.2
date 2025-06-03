@@ -11,6 +11,8 @@
             @click="$router.push('/')"
             class="mr-4"
           >
+            <v-icon>mdi-arrow-left</v-icon>
+            <span class="ml-2">Home</span>
           </v-btn>
           <h1 class="text-h4">Dados do Local</h1>
         </v-col>
