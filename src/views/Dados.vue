@@ -1,23 +1,7 @@
 <template>
   <div class="dados">
     <v-container fluid class="pa-0">
-      <!-- Cabeçalho -->
-      <v-row class="header-row">
-        <v-col cols="12" class="d-flex align-center">
-          <v-btn
-            color="primary"
-            icon="mdi-arrow-left"
-            size="large"
-            @click="$router.push('/')"
-            class="mr-4"
-          >
-            <v-icon>mdi-arrow-left</v-icon>
-            <span class="ml-2">Home</span>
-          </v-btn>
-          <h1 class="text-h4">Dados do Local</h1>
-        </v-col>
-      </v-row>
-
+      <AppNavbar title="Dados do Local" />
       <!-- Container do Mapa -->
       <v-row>
         <v-col cols="12" class="pa-0">
@@ -32,6 +16,7 @@
 import { onMounted } from 'vue';
 import * as Cesium from '@cesium/engine';
 import { Viewer } from '@cesium/widgets';
+import AppNavbar from '@/components/AppNavbar.vue';
 
 onMounted(() => {
   const viewer = new Viewer('cesiumContainer', {
@@ -53,13 +38,13 @@ onMounted(() => {
     }
   });
 
-  // Configurar a visualização inicial (São Paulo capital)
+  // Configurar a visualização inicial (Maringá)
   viewer.camera.setView({
     destination: Cesium.Rectangle.fromDegrees(
-      -46.8754, // oeste
-      -24.0082, // sul
-      -46.3654, // leste
-      -23.3566  // norte
+      -52.0380, // oeste
+      -23.5210, // sul
+      -51.8380, // leste
+      -23.3210  // norte
     )
   });
 
@@ -85,25 +70,22 @@ onMounted(() => {
 .dados {
   width: 100%;
   height: 100vh;
-  background: white;
-}
-
-.header-row {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1000;
-  background: white;
-  padding: 1rem;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  background: transparent !important;
+  padding: 0 !important;
+  margin: 0 !important;
 }
 
 #cesiumContainer {
-  width: 100%;
-  height: calc(100vh - 80px);
-  margin-top: 80px;
-  background: white;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  height: 100vh !important;
+  width: 100% !important;
+  background: transparent !important;
 }
 
 .cesium-viewer-toolbar,
@@ -134,8 +116,11 @@ onMounted(() => {
   max-width: none !important;
 }
 
-.text-h4 {
-  margin: 0;
-  font-weight: 500;
+/* Garantir que nenhum elemento tenha padding ou margin indesejado */
+:deep(.v-application__wrap),
+:deep(.v-main),
+:deep(.v-main__wrap) {
+  padding: 0 !important;
+  margin: 0 !important;
 }
 </style>
