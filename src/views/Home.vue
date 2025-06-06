@@ -3,15 +3,15 @@
     <h1 class="title">HOME</h1>
     <div class="menu-container">
       <router-link to="/simulacao" class="menu-item">
-        <v-icon size="64" icon="mdi-city"></v-icon>
+        <img src="@/assets/icon_simulacao.png" alt="Ícone Simulação" class="menu-icon">
         <span>Simulação</span>
       </router-link>
       <router-link to="/dados" class="menu-item">
-        <v-icon size="64" icon="mdi-chart-line"></v-icon>
+        <img src="@/assets/icon_dados.png" alt="Ícone Dados" class="menu-icon">
         <span>Dados do local</span>
       </router-link>
       <router-link to="/sobre" class="menu-item">
-        <v-icon size="64" icon="mdi-information"></v-icon>
+        <img src="@/assets/icon_info.png" alt="Ícone Sobre" class="menu-icon">
         <span>Sobre</span>
       </router-link>
     </div>
@@ -47,7 +47,10 @@ defineOptions({
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(180deg, #03A9F4 0%, #81D4FA 100%);
+  background-image: url('@/assets/background.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   color: white;
   position: relative;
 }
@@ -86,6 +89,12 @@ defineOptions({
 .menu-item span {
   margin-top: 1rem;
   font-size: 1.2rem;
+}
+
+.menu-icon {
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
 }
 
 .social-links {
