@@ -1,23 +1,6 @@
 <template>
   <div id="cesiumContainer">
-    <!-- Navbar -->
-    <v-app-bar
-      class="header-row"
-      elevation="0"
-      color="rgba(255, 255, 255, 0.2)"
-    >
-      <v-btn
-        color="primary"
-        icon="mdi-arrow-left"
-        size="large"
-        @click="$router.push('/')"
-        class="mr-4"
-      >
-        <v-icon>mdi-arrow-left</v-icon>
-        <span class="ml-2">Home</span>
-      </v-btn>
-      <h1 class="text-h4">Simulação</h1>
-      <v-spacer></v-spacer>
+    <AppNavbar title="Simulação">
       <v-text-field
         v-model="searchQuery"
         label="Buscar localização"
@@ -28,63 +11,76 @@
         class="search-field"
         @keyup.enter="searchLocation"
       ></v-text-field>
-    </v-app-bar>
+    </AppNavbar>
+
+    <!-- Botão de toggle -->
+    <v-btn
+      class="tools-toggle"
+      color="primary"
+      @click="showTools = !showTools"
+      elevation="2"
+    >
+      <v-icon>{{ showTools ? 'mdi-close' : 'mdi-tools' }}</v-icon>
+      <span class="ml-2">{{ showTools ? 'Fechar' : 'Ferramentas' }}</span>
+    </v-btn>
 
     <!-- Controles de construção -->
-    <div class="building-controls">
-      <v-card class="pa-4 controls-card">
-        <v-card-title>Ferramentas de Construção</v-card-title>
+    <v-slide-x-transition>
+      <div class="building-controls" v-show="showTools">
+        <v-card class="pa-4 controls-card">
+          <v-card-title>Ferramentas de Construção</v-card-title>
 
-        <v-card-text>
-          <!-- Modo de construção -->
-          <v-select
-            v-model="buildingMode"
-            :items="buildingModes"
-            label="Modo de construção"
-            class="mb-4"
-          ></v-select>
+          <v-card-text>
+            <!-- Modo de construção -->
+            <v-select
+              v-model="buildingMode"
+              :items="buildingModes"
+              label="Modo de construção"
+              class="mb-4"
+            ></v-select>
 
-          <!-- Estilo do edifício -->
-          <v-select
-            v-model="buildingStyle"
-            :items="buildingStyles"
-            label="Estilo do edifício"
-            class="mb-4"
-          ></v-select>
+            <!-- Estilo do edifício -->
+            <v-select
+              v-model="buildingStyle"
+              :items="buildingStyles"
+              label="Estilo do edifício"
+              class="mb-4"
+            ></v-select>
 
-          <!-- Altura do edifício -->
-          <v-text-field
-            v-model="buildingHeight"
-            label="Altura (metros)"
-            type="number"
-            class="mb-4"
-          ></v-text-field>
+            <!-- Altura do edifício -->
+            <v-text-field
+              v-model="buildingHeight"
+              label="Altura (metros)"
+              type="number"
+              class="mb-4"
+            ></v-text-field>
 
-          <!-- Botões de ação -->
-          <v-btn-group class="d-flex">
-            <v-btn
-              color="primary"
-              @click="startDrawing"
-              :disabled="isDrawing"
-              class="flex-grow-1"
-            >
-              <v-icon left>mdi-pencil</v-icon>
-              Iniciar
-            </v-btn>
+            <!-- Botões de ação -->
+            <v-btn-group class="d-flex">
+              <v-btn
+                color="primary"
+                @click="startDrawing"
+                :disabled="isDrawing"
+                class="flex-grow-1"
+              >
+                <v-icon left>mdi-pencil</v-icon>
+                Iniciar
+              </v-btn>
 
-            <v-btn
-              color="error"
-              @click="cancelDrawing"
-              :disabled="!isDrawing"
-              class="flex-grow-1"
-            >
-              <v-icon left>mdi-close</v-icon>
-              Cancelar
-            </v-btn>
-          </v-btn-group>
-        </v-card-text>
-      </v-card>
-    </div>
+              <v-btn
+                color="error"
+                @click="cancelDrawing"
+                :disabled="!isDrawing"
+                class="flex-grow-1"
+              >
+                <v-icon left>mdi-close</v-icon>
+                Cancelar
+              </v-btn>
+            </v-btn-group>
+          </v-card-text>
+        </v-card>
+      </div>
+    </v-slide-x-transition>
   </div>
 </template>
 
@@ -92,6 +88,7 @@
 import { ref, onMounted, onUnmounted } from 'vue';
 import * as Cesium from '@cesium/engine';
 import { Viewer } from '@cesium/widgets';
+import AppNavbar from '@/components/AppNavbar.vue';
 
 // Estados
 const viewer = ref(null);
@@ -103,6 +100,7 @@ const buildingHeight = ref(30);
 const points = ref([]);
 const activeEntity = ref(null);
 const handler = ref(null);
+const showTools = ref(false);
 
 // Opções de construção
 const buildingModes = [
@@ -164,7 +162,7 @@ onMounted(async () => {
 
   // Configurar a visualização inicial
   viewer.value.camera.setView({
-    destination: Cesium.Cartesian3.fromDegrees(-46.6333, -23.5505, 1000), // São Paulo
+    destination: Cesium.Cartesian3.fromDegrees(-51.9380, -23.4210, 1000), // Maringá
     orientation: {
       heading: Cesium.Math.toRadians(0),
       pitch: Cesium.Math.toRadians(-35),
@@ -391,53 +389,145 @@ html, body, #app {
 }
 
 #cesiumContainer {
-  width: 100%;
-  height: 100vh;
-  position: absolute;
-  top: 0;
-  left: 0;
-  background: white;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  height: 100vh !important;
+  width: 100% !important;
+  background: transparent !important;
 }
 
-.header-row {
-  position: fixed !important;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1000;
-  backdrop-filter: blur(10px);
-  padding: 0.5rem 1rem !important;
+.navbar {
+  background: transparent !important;
+  height: 40px !important;
   margin: 0 !important;
-  height: 64px;
+  padding: 0 !important;
+  box-shadow: none !important;
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  right: 8px;
+  z-index: 100;
+}
+
+:deep(.v-toolbar__content),
+:deep(.v-app-bar),
+:deep(.v-toolbar),
+:deep(.v-toolbar__wrapper) {
+  background: transparent !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  height: 40px !important;
+  min-height: 40px !important;
+  box-shadow: none !important;
+  background-color: transparent !important;
+  background-image: none !important;
+}
+
+.navbar-content {
+  background: rgba(33, 33, 64, 0.8);
+  backdrop-filter: blur(10px);
+  height: 40px;
+  padding: 0 16px;
+  border-radius: 8px;
   display: flex;
   align-items: center;
+  width: 100%;
+  gap: 16px;
+}
+
+.text-h4 {
+  font-size: 1.25rem !important;
+  font-weight: 500;
+  margin: 0;
+  line-height: 40px;
+  color: white;
+  flex-shrink: 0;
+}
+
+.home-btn {
+  height: 32px;
+  border-radius: 16px;
+  padding: 0 16px;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  font-weight: 500;
+  text-transform: none;
+  letter-spacing: normal;
+  backdrop-filter: blur(5px);
+  flex-shrink: 0;
+}
+
+.home-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
 }
 
 .search-field {
   max-width: 300px;
-  margin-right: 16px;
   background: rgba(255, 255, 255, 0.1);
   border-radius: 4px;
+  color: white;
+  flex-shrink: 1;
 }
 
-.text-h4 {
-  margin: 0;
-  font-weight: 500;
-  font-size: 1.5rem !important;
-  color: rgba(0, 0, 0, 0.87);
+:deep(.v-field__input) {
+  color: white !important;
+}
+
+:deep(.v-field__outline) {
+  --v-field-border-opacity: 0.2;
+}
+
+:deep(.v-field__clearable) {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+:deep(.v-field__input::placeholder) {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.tools-toggle {
+  position: fixed !important;
+  top: 80px;
+  right: 8px !important;
+  left: auto !important;
+  height: 32px !important;
+  background: rgba(33, 33, 64, 0.7) !important;
+  backdrop-filter: blur(10px);
+  border-radius: 6px !important;
+  color: white !important;
+  padding: 0 12px !important;
+  z-index: 1000 !important;
+  font-size: 0.875rem !important;
+}
+
+.tools-toggle :deep(.v-btn__content) {
+  color: white !important;
+  gap: 4px;
+}
+
+.tools-toggle :deep(.v-icon) {
+  font-size: 18px !important;
 }
 
 .building-controls {
-  position: absolute;
-  bottom: 20px;
-  left: 20px;
+  position: fixed;
+  top: 122px;
+  right: 8px !important;
+  left: auto !important;
   z-index: 1000;
   width: 300px;
 }
 
 .controls-card {
-  background: rgba(255, 255, 255, 0.9) !important;
+  background: rgba(33, 33, 64, 0.8) !important;
   backdrop-filter: blur(10px);
+  border-radius: 8px !important;
+  color: white !important;
 }
 
 .cesium-viewer-toolbar,
@@ -469,5 +559,75 @@ html, body, #app {
 
 .v-btn:hover {
   opacity: 1;
+}
+
+/* Garantir que o app não tenha background */
+:deep(.v-application),
+:deep(.v-layout) {
+  background: transparent !important;
+}
+
+/* Garantir que nenhum elemento tenha padding ou margin indesejado */
+:deep(.v-application__wrap),
+:deep(.v-main),
+:deep(.v-main__wrap) {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+/* Remover qualquer padding do container principal */
+.home {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+:deep(.v-card-title) {
+  color: white !important;
+  font-size: 1.1rem !important;
+}
+
+:deep(.v-label),
+:deep(.v-select__selection),
+:deep(.v-field__input),
+:deep(.v-select__selection-text),
+:deep(.v-text-field input) {
+  color: white !important;
+}
+
+:deep(.v-field) {
+  color: white !important;
+  --v-field-border-opacity: 0.3;
+}
+
+:deep(.v-field__outline) {
+  --v-field-border-opacity: 0.3;
+}
+
+:deep(.v-select__menu) {
+  background: rgba(33, 33, 64, 0.95) !important;
+  backdrop-filter: blur(10px);
+}
+
+:deep(.v-list) {
+  background: transparent !important;
+  color: white !important;
+}
+
+:deep(.v-list-item) {
+  color: white !important;
+}
+
+:deep(.v-list-item:hover) {
+  background: rgba(255, 255, 255, 0.1) !important;
+}
+
+:deep(.v-btn-group .v-btn) {
+  color: white !important;
+}
+
+/* Garantir que o botão e controles fiquem sobre o mapa */
+:deep(.cesium-viewer),
+:deep(.cesium-widget) {
+  z-index: 0;
 }
 </style>
