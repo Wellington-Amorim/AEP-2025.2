@@ -1,61 +1,63 @@
 <template>
-  <div class="terrain-analysis-panel" :class="{ 'is-expanded': isExpanded }">
+  <div class="terrain-analysis-panel" :class="{ 'is-expanded': modelValue }">
     <div class="panel-header" @click="togglePanel">
       <h3>Análise de Terreno</h3>
-      <span class="toggle-icon">{{ isExpanded ? '▼' : '▶' }}</span>
+      <span class="toggle-icon">{{ modelValue ? '▼' : '▶' }}</span>
     </div>
 
-    <div v-if="isExpanded" class="panel-content">
-      <div v-if="!analyzing && !analysisResult" class="instructions">
-        <p>Desenhe uma área no mapa para analisar o terreno.</p>
-        <button @click="startAnalysis" class="start-btn">
-          Iniciar Análise
-        </button>
-      </div>
-
-      <div v-if="analyzing" class="loading">
-        <p>Analisando terreno...</p>
-      </div>
-
-      <div v-if="analysisResult" class="analysis-results">
-        <div class="result-section">
-          <h4>Características do Terreno</h4>
-          <div class="data-grid">
-            <div class="data-item">
-              <span class="label">Inclinação:</span>
-              <span class="value">{{ formatNumber(analysisResult.slope) }}%</span>
-            </div>
-            <div class="data-item">
-              <span class="label">Altitude:</span>
-              <span class="value">{{ formatNumber(analysisResult.height) }}m</span>
-            </div>
-            <div class="data-item">
-              <span class="label">Nível de Risco:</span>
-              <span class="value" :class="'risk-' + analysisResult.riskLevel.toLowerCase()">
-                {{ analysisResult.riskLevel }}
-              </span>
-            </div>
-          </div>
+    <div class="panel-content-wrapper">
+      <div v-if="modelValue" class="panel-content">
+        <div v-if="!analyzing && !analysisResult" class="instructions">
+          <p>Desenhe uma área no mapa para analisar o terreno.</p>
+          <button @click="startAnalysis" class="start-btn">
+            Iniciar Análise
+          </button>
         </div>
 
-        <div class="result-section">
-          <h4>Recomendações</h4>
-          <div class="recommendations">
-            <p :class="{ 'text-danger': !analysisResult.buildingRecommendations.suitable }">
-              {{ analysisResult.buildingRecommendations.message }}
-            </p>
-            <ul v-if="analysisResult.buildingRecommendations.recommendations">
-              <li v-for="(rec, index) in analysisResult.buildingRecommendations.recommendations"
-                  :key="index">
-                {{ rec }}
-              </li>
-            </ul>
-          </div>
+        <div v-if="analyzing" class="loading">
+          <p>Analisando terreno...</p>
         </div>
 
-        <button @click="startAnalysis" class="analyze-new-btn">
-          Analisar Nova Área
-        </button>
+        <div v-if="analysisResult" class="analysis-results">
+          <div class="result-section">
+            <h4>Características do Terreno</h4>
+            <div class="data-grid">
+              <div class="data-item">
+                <span class="label">Inclinação:</span>
+                <span class="value">{{ formatNumber(analysisResult.slope) }}%</span>
+              </div>
+              <div class="data-item">
+                <span class="label">Altitude:</span>
+                <span class="value">{{ formatNumber(analysisResult.height) }}m</span>
+              </div>
+              <div class="data-item">
+                <span class="label">Nível de Risco:</span>
+                <span class="value" :class="'risk-' + analysisResult.riskLevel.toLowerCase()">
+                  {{ analysisResult.riskLevel }}
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div class="result-section">
+            <h4>Recomendações</h4>
+            <div class="recommendations">
+              <p :class="{ 'text-danger': !analysisResult.buildingRecommendations.suitable }">
+                {{ analysisResult.buildingRecommendations.message }}
+              </p>
+              <ul v-if="analysisResult.buildingRecommendations.recommendations">
+                <li v-for="(rec, index) in analysisResult.buildingRecommendations.recommendations"
+                    :key="index">
+                  {{ rec }}
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <button @click="startAnalysis" class="analyze-new-btn">
+            Analisar Nova Área
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -70,19 +72,22 @@ const props = defineProps({
   viewer: {
     type: Object,
     required: true
+  },
+  modelValue: {
+    type: Boolean,
+    default: false
   }
 })
 
-const emit = defineEmits(['startAnalysis', 'analysisComplete'])
+const emit = defineEmits(['startAnalysis', 'analysisComplete', 'update:modelValue'])
 
-const isExpanded = ref(true)
 const analyzing = ref(false)
 const analysisResult = ref(null)
 let terrainAnalyzer = null
 let drawHandler = null
 
 function togglePanel() {
-  isExpanded.value = !isExpanded.value
+  emit('update:modelValue', !props.modelValue)
 }
 
 function formatNumber(num) {
@@ -157,30 +162,43 @@ function startAnalysis() {
 
 <style scoped>
 .terrain-analysis-panel {
-  position: absolute;
-  right: 20px;
-  top: 340px;
   width: 300px;
   background: rgba(255, 255, 255, 0.95);
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-  z-index: 1000;
+  margin-bottom: 10px; /* Espaçamento entre os painéis */
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
+}
+
+.terrain-analysis-panel:not(.is-expanded) {
+  max-height: 44px; /* Altura do cabeçalho quando fechado */
+}
+
+.terrain-analysis-panel.is-expanded {
+  max-height: 600px; /* Altura máxima quando expandido - ajuste conforme necessário */
 }
 
 .panel-header {
   padding: 12px 15px;
   background: #2c3e50;
   color: white;
-  border-radius: 8px 8px 0 0;
+  border-radius: 8px;
   cursor: pointer;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
 }
 
-.panel-header h3 {
-  margin: 0;
-  font-size: 16px;
+.is-expanded .panel-header {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.panel-content-wrapper {
+  overflow: hidden;
 }
 
 .panel-content {
