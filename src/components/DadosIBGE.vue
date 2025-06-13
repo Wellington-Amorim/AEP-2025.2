@@ -1,71 +1,73 @@
 <template>
-  <div class="dados-ibge-panel" :class="{ 'is-expanded': isExpanded }">
+  <div class="dados-ibge-panel" :class="{ 'is-expanded': modelValue }">
     <div class="panel-header" @click="togglePanel">
       <h3>Dados IBGE</h3>
-      <span class="toggle-icon">{{ isExpanded ? '▼' : '▶' }}</span>
+      <span class="toggle-icon">{{ modelValue ? '▼' : '▶' }}</span>
     </div>
 
-    <div v-if="isExpanded" class="panel-content">
-      <div class="search-section">
-        <input
-          v-model="searchTerm"
-          @input="handleSearch"
-          placeholder="Buscar município..."
-          class="search-input"
-        />
-        <div v-if="searchResults.length > 0" class="search-results">
-          <div
-            v-for="result in searchResults"
-            :key="result.id"
-            @click="selectMunicipio(result)"
-            class="search-result-item"
+    <div class="panel-content-wrapper">
+      <div v-if="modelValue" class="panel-content">
+        <div class="search-section">
+          <input
+            v-model="searchTerm"
+            @input="handleSearch"
+            placeholder="Buscar município..."
+            class="search-input"
+          />
+          <div v-if="searchResults.length > 0" class="search-results">
+            <div
+              v-for="result in searchResults"
+              :key="result.id"
+              @click="selectMunicipio(result)"
+              class="search-result-item"
+            >
+              {{ result.nome }} - {{ result.microrregiao.mesorregiao.UF.sigla }}
+            </div>
+          </div>
+        </div>
+
+        <div v-if="dadosMunicipio" class="municipality-data">
+          <h4>{{ dadosMunicipio.nome }}</h4>
+
+          <div class="data-section">
+            <h5>Dados Demográficos</h5>
+            <div v-if="dadosDemograficos" class="data-grid">
+              <div class="data-item">
+                <span class="label">População:</span>
+                <span class="value">{{ formatNumber(dadosDemograficos.populacao) }}</span>
+              </div>
+              <div class="data-item">
+                <span class="label">Densidade:</span>
+                <span class="value">{{ formatNumber(dadosDemograficos.densidade) }} hab/km²</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="data-section">
+            <h5>Indicadores Urbanísticos</h5>
+            <div v-if="indicadoresUrbanisticos" class="data-grid">
+              <div class="data-item">
+                <span class="label">Domicílios:</span>
+                <span class="value">{{ formatNumber(indicadoresUrbanisticos.domicilios) }}</span>
+              </div>
+              <div class="data-item">
+                <span class="label">Cobertura de Água:</span>
+                <span class="value">{{ indicadoresUrbanisticos.coberturaAgua }}%</span>
+              </div>
+              <div class="data-item">
+                <span class="label">Cobertura de Esgoto:</span>
+                <span class="value">{{ indicadoresUrbanisticos.coberturaEsgoto }}%</span>
+              </div>
+            </div>
+          </div>
+
+          <button
+            @click="focusOnMunicipio"
+            class="focus-button"
           >
-            {{ result.nome }} - {{ result.microrregiao.mesorregiao.UF.sigla }}
-          </div>
+            Focar no Município
+          </button>
         </div>
-      </div>
-
-      <div v-if="dadosMunicipio" class="municipality-data">
-        <h4>{{ dadosMunicipio.nome }}</h4>
-
-        <div class="data-section">
-          <h5>Dados Demográficos</h5>
-          <div v-if="dadosDemograficos" class="data-grid">
-            <div class="data-item">
-              <span class="label">População:</span>
-              <span class="value">{{ formatNumber(dadosDemograficos.populacao) }}</span>
-            </div>
-            <div class="data-item">
-              <span class="label">Densidade:</span>
-              <span class="value">{{ formatNumber(dadosDemograficos.densidade) }} hab/km²</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="data-section">
-          <h5>Indicadores Urbanísticos</h5>
-          <div v-if="indicadoresUrbanisticos" class="data-grid">
-            <div class="data-item">
-              <span class="label">Domicílios:</span>
-              <span class="value">{{ formatNumber(indicadoresUrbanisticos.domicilios) }}</span>
-            </div>
-            <div class="data-item">
-              <span class="label">Cobertura de Água:</span>
-              <span class="value">{{ indicadoresUrbanisticos.coberturaAgua }}%</span>
-            </div>
-            <div class="data-item">
-              <span class="label">Cobertura de Esgoto:</span>
-              <span class="value">{{ indicadoresUrbanisticos.coberturaEsgoto }}%</span>
-            </div>
-          </div>
-        </div>
-
-        <button
-          @click="focusOnMunicipio"
-          class="focus-button"
-        >
-          Focar no Município
-        </button>
       </div>
     </div>
   </div>
@@ -80,12 +82,15 @@ const props = defineProps({
   viewer: {
     type: Object,
     required: true
+  },
+  modelValue: {
+    type: Boolean,
+    default: false
   }
 })
 
-const emit = defineEmits(['municipioSelected'])
+const emit = defineEmits(['municipioSelected', 'update:modelValue'])
 
-const isExpanded = ref(false)
 const searchTerm = ref('')
 const searchResults = ref([])
 const dadosMunicipio = ref(null)
@@ -95,7 +100,7 @@ const indicadoresUrbanisticos = ref(null)
 let searchTimeout = null
 
 function togglePanel() {
-  isExpanded.value = !isExpanded.value
+  emit('update:modelValue', !props.modelValue)
 }
 
 async function handleSearch() {
@@ -164,30 +169,43 @@ function formatNumber(num) {
 
 <style scoped>
 .dados-ibge-panel {
-  position: absolute;
-  right: 20px;
-  top: 60px;
   width: 300px;
   background: rgba(255, 255, 255, 0.95);
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-  z-index: 1000;
+  margin-bottom: 10px; /* Espaçamento entre os painéis */
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
+}
+
+.dados-ibge-panel:not(.is-expanded) {
+  max-height: 44px; /* Altura do cabeçalho quando fechado */
+}
+
+.dados-ibge-panel.is-expanded {
+  max-height: 600px; /* Altura máxima quando expandido - ajuste conforme necessário */
 }
 
 .panel-header {
   padding: 12px 15px;
   background: #2c3e50;
   color: white;
-  border-radius: 8px 8px 0 0;
+  border-radius: 8px;
   cursor: pointer;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
 }
 
-.panel-header h3 {
-  margin: 0;
-  font-size: 16px;
+.is-expanded .panel-header {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.panel-content-wrapper {
+  overflow: hidden;
 }
 
 .panel-content {
@@ -208,10 +226,10 @@ function formatNumber(num) {
 }
 
 .search-results {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  right: 0;
+  position: relative; /* Alterado de absolute para relative, já que o pai vai lidar com a posição */
+  top: auto; /* Removido */
+  left: auto; /* Removido */
+  right: auto; /* Removido */
   background: white;
   border: 1px solid #ddd;
   border-radius: 0 0 4px 4px;

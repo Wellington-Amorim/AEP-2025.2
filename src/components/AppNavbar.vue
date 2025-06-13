@@ -73,7 +73,8 @@ defineProps({
   color: white;
 }
 
-.home-btn {
+.home-btn,
+.data-toggle-btn {
   height: 32px;
   border-radius: 16px;
   padding: 0 16px;
@@ -85,7 +86,8 @@ defineProps({
   backdrop-filter: blur(5px);
 }
 
-.home-btn:hover {
+.home-btn:hover,
+.data-toggle-btn:hover {
   background: rgba(255, 255, 255, 0.2);
 }
 </style>
