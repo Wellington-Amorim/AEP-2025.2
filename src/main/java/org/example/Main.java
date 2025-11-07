@@ -1,17 +1,44 @@
 package org.example;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-public class Main {
-    public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+import org.example.controller.MenuController;
+import org.example.service.Gerenciador;
+import org.example.service.ServicoNotificacao;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
+import java.util.Scanner;
+
+public class Main {
+    private static final Logger logger = LoggerFactory.getLogger(Main.class);
+    public static void main(String[] args) {
+        logger.info("Iniciando aplicacao");
+        
+        try (Scanner scanner = new Scanner(System.in)) {
+            ServicoNotificacao servicoNotificacao = new ServicoNotificacao();
+            Thread t = new Thread(servicoNotificacao, "notificador");
+            t.setDaemon(true);
+            t.start();
+            
+            Gerenciador gerenciador = new Gerenciador(servicoNotificacao);
+            MenuController menuController = new MenuController(scanner, gerenciador);
+            
+            try {
+                menuController.executarMenu();
+            } finally {
+                logger.info("Desligando servico de notificacao");
+                servicoNotificacao.desligar();
+
+                try {
+                    logger.info("Encerrando pool de conexoes");
+                    org.example.db.Database.encerrar();
+                } catch (Exception e) {
+                    logger.error("Erro ao encerrar pool de conexoes", e);
+                }
+                
+                logger.info("Aplicacao encerrada");
+            }
         }
     }
+
+
 }

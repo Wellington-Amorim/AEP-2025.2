@@ -1,0 +1,22 @@
+# Configurações do Banco de Dados
+db.url=jdbc:mysql://localhost:3306/doacoes
+db.username=root
+db.password=root
+
+# Configurações de Pool de Conexões
+db.pool.maximumPoolSize=10
+db.pool.minimumIdle=5
+db.pool.idleTimeout=300000
+db.pool.connectionTimeout=30000
+db.pool.maxLifetime=1800000
+
+# Configurações de Logging
+logging.level.root=INFO
+logging.level.org.example=DEBUG
+logging.file.name=logs/aplicacao.log
+logging.pattern.console=%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n
+logging.pattern.file=%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n
+
+# Configurações do Sistema
+notificacao.intervalo=5000
+cache.timeToLive=300000

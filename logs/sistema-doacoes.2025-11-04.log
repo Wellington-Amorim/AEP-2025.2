@@ -1,0 +1,172 @@
+2025-11-04 09:34:56.257 [org.example.Main.main()] INFO  org.example.Main - Iniciando aplicação
+2025-11-04 09:34:56.303 [org.example.Main.main()] INFO  o.example.controller.MenuController - Iniciando sistema
+2025-11-04 09:35:01.019 [org.example.Main.main()] INFO  o.example.controller.MenuController - Encerrando sistema
+2025-11-04 09:35:01.019 [org.example.Main.main()] INFO  org.example.Main - Desligando serviço de notificação
+2025-11-04 09:35:01.021 [org.example.Main.main()] INFO  org.example.Main - Encerrando pool de conexões
+2025-11-04 09:35:01.047 [org.example.Main.main()] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-11-04 09:35:01.410 [org.example.Main.main()] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@4a9f49f1
+2025-11-04 09:35:01.412 [org.example.Main.main()] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-11-04 09:35:01.449 [org.example.Main.main()] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2025-11-04 09:35:01.463 [org.example.Main.main()] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2025-11-04 09:35:01.463 [org.example.Main.main()] INFO  org.example.Main - Aplicação encerrada
+2025-11-04 09:43:00.393 [org.example.Main.main()] INFO  org.example.Main - Iniciando aplicação
+2025-11-04 09:43:00.450 [org.example.Main.main()] INFO  o.example.controller.MenuController - Iniciando sistema
+2025-11-04 09:43:34.292 [org.example.Main.main()] INFO  o.example.controller.MenuController - Listando doadores
+2025-11-04 09:43:34.314 [org.example.Main.main()] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-11-04 09:43:34.646 [org.example.Main.main()] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@41f1c4cf
+2025-11-04 09:43:34.649 [org.example.Main.main()] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-11-04 09:43:52.407 [org.example.Main.main()] INFO  org.example.Main - Desligando serviço de notificação
+2025-11-04 09:43:52.407 [org.example.Main.main()] INFO  org.example.Main - Encerrando pool de conexões
+2025-11-04 09:43:52.408 [org.example.Main.main()] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2025-11-04 09:43:52.420 [org.example.Main.main()] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2025-11-04 09:43:52.420 [org.example.Main.main()] INFO  org.example.Main - Aplicação encerrada
+2025-11-04 10:23:11.477 [main] INFO  org.example.Main - Iniciando aplicação
+2025-11-04 10:23:11.496 [main] INFO  o.example.controller.MenuController - Iniciando sistema
+2025-11-04 10:24:53.815 [main] INFO  o.example.controller.MenuController - Listando doadores
+2025-11-04 10:24:53.856 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-11-04 10:24:56.099 [main] INFO  org.example.Main - Desligando serviço de notificação
+2025-11-04 10:24:56.099 [main] INFO  org.example.Main - Encerrando pool de conexões
+2025-11-04 10:25:10.863 [main] INFO  org.example.Main - Iniciando aplicação
+2025-11-04 10:25:10.883 [main] INFO  o.example.controller.MenuController - Iniciando sistema
+2025-11-04 10:25:21.985 [main] INFO  o.example.controller.MenuController - Listando doadores
+2025-11-04 10:25:22.029 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-11-04 10:25:24.213 [main] INFO  org.example.Main - Desligando serviço de notificação
+2025-11-04 10:25:24.214 [main] INFO  org.example.Main - Encerrando pool de conexões
+2025-11-04 14:57:01.558 [main] INFO  org.example.Main - Iniciando aplicação
+2025-11-04 14:57:01.576 [main] INFO  o.example.controller.MenuController - Iniciando sistema
+2025-11-04 14:57:01.578 [main] INFO  o.example.controller.MenuController - Listando doadores
+2025-11-04 14:57:01.632 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-11-04 14:57:02.058 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@5acf93bb
+2025-11-04 14:57:02.060 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-11-04 14:57:02.185 [main] INFO  org.example.Main - Desligando serviço de notificação
+2025-11-04 14:57:02.185 [main] INFO  org.example.Main - Encerrando pool de conexões
+2025-11-04 14:57:02.186 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2025-11-04 14:57:02.208 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2025-11-04 14:57:02.209 [main] INFO  org.example.Main - Aplicação encerrada
+2025-11-04 15:07:59.705 [org.example.Main.main()] INFO  org.example.Main - Iniciando aplicação
+2025-11-04 15:07:59.740 [org.example.Main.main()] INFO  o.example.controller.MenuController - Iniciando sistema
+2025-11-04 15:08:41.665 [org.example.Main.main()] INFO  o.example.controller.MenuController - Listando doadores
+2025-11-04 15:08:41.694 [org.example.Main.main()] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-11-04 15:08:42.042 [org.example.Main.main()] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@6094371e
+2025-11-04 15:08:42.044 [org.example.Main.main()] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-11-04 15:09:18.403 [org.example.Main.main()] INFO  org.example.Main - Desligando serviço de notificação
+2025-11-04 15:09:18.404 [org.example.Main.main()] INFO  org.example.Main - Encerrando pool de conexões
+2025-11-04 15:09:18.404 [org.example.Main.main()] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2025-11-04 15:09:18.416 [org.example.Main.main()] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2025-11-04 15:09:18.416 [org.example.Main.main()] INFO  org.example.Main - Aplicação encerrada
+2025-11-04 15:09:53.348 [org.example.Main.main()] INFO  org.example.Main - Iniciando aplicação
+2025-11-04 15:09:53.386 [org.example.Main.main()] INFO  o.example.controller.MenuController - Iniciando sistema
+2025-11-04 15:10:00.646 [org.example.Main.main()] INFO  org.example.Main - Desligando serviço de notificação
+2025-11-04 15:10:00.646 [org.example.Main.main()] INFO  org.example.Main - Encerrando pool de conexões
+2025-11-04 15:10:00.651 [org.example.Main.main()] INFO  org.example.Main - Aplicação encerrada
+2025-11-04 15:27:33.526 [org.example.Main.main()] INFO  org.example.Main - Iniciando aplicação
+2025-11-04 15:27:33.561 [org.example.Main.main()] INFO  o.example.controller.MenuController - Iniciando sistema
+2025-11-04 15:27:36.373 [org.example.Main.main()] INFO  org.example.Main - Desligando serviço de notificação
+2025-11-04 15:27:36.374 [org.example.Main.main()] INFO  org.example.Main - Encerrando pool de conexões
+2025-11-04 15:27:36.379 [org.example.Main.main()] INFO  org.example.Main - Aplicação encerrada
+2025-11-04 15:33:57.572 [org.example.Main.main()] INFO  org.example.Main - Iniciando aplicação
+2025-11-04 15:33:57.609 [org.example.Main.main()] INFO  o.example.controller.MenuController - Iniciando sistema
+2025-11-04 15:33:59.384 [org.example.Main.main()] INFO  org.example.Main - Desligando serviço de notificação
+2025-11-04 15:33:59.385 [org.example.Main.main()] INFO  org.example.Main - Encerrando pool de conexões
+2025-11-04 15:33:59.389 [org.example.Main.main()] INFO  org.example.Main - Aplicação encerrada
+2025-11-04 15:50:39.723 [main] INFO  org.example.Main - Iniciando aplicação
+2025-11-04 15:50:39.745 [main] INFO  o.example.controller.MenuController - Iniciando sistema
+2025-11-04 15:50:39.748 [main] INFO  o.example.controller.MenuController - Listando doadores
+2025-11-04 15:50:39.808 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-11-04 15:50:40.323 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@5acf93bb
+2025-11-04 15:50:40.326 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-11-04 15:50:40.504 [main] INFO  org.example.Main - Desligando serviço de notificação
+2025-11-04 15:50:40.504 [main] INFO  org.example.Main - Encerrando pool de conexões
+2025-11-04 15:50:40.504 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2025-11-04 15:50:40.524 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2025-11-04 15:50:40.525 [main] INFO  org.example.Main - Aplicação encerrada
+2025-11-04 15:55:38.895 [main] INFO  org.example.Main - Iniciando aplicação
+2025-11-04 15:55:38.919 [main] INFO  o.example.controller.MenuController - Iniciando sistema
+2025-11-04 15:55:38.922 [main] INFO  o.example.controller.MenuController - Listando doadores
+2025-11-04 15:55:38.983 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-11-04 15:55:39.451 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@5acf93bb
+2025-11-04 15:55:39.454 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-11-04 15:55:40.546 [main] INFO  org.example.Main - Desligando serviço de notificação
+2025-11-04 15:55:40.547 [main] INFO  org.example.Main - Encerrando pool de conexões
+2025-11-04 15:55:40.548 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2025-11-04 15:55:40.565 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2025-11-04 15:55:40.566 [main] INFO  org.example.Main - Aplicação encerrada
+2025-11-04 15:57:34.460 [main] INFO  org.example.Main - Iniciando aplicação
+2025-11-04 15:57:34.480 [main] INFO  o.example.controller.MenuController - Iniciando sistema
+2025-11-04 15:57:34.483 [main] INFO  o.example.controller.MenuController - Iniciando cadastro de beneficiário
+2025-11-04 15:57:34.547 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-11-04 15:57:35.004 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@1e04fa0a
+2025-11-04 15:57:35.007 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-11-04 15:57:36.056 [main] INFO  o.example.controller.MenuController - Beneficiário cadastrado com sucesso: Beneficiario{id=1, nome='Benef 1', necessidade='Caderno', dataCadastro=2025-11-04T12:57:36}
+2025-11-04 15:57:36.057 [main] INFO  o.example.controller.MenuController - Iniciando registro de doação
+2025-11-04 15:57:36.082 [main] INFO  o.example.controller.MenuController - Doação registrada com sucesso: Doacao{id=1, doadorId=1, beneficiarioId=null, item='Lapis', quantidade=1, status=PENDENTE}
+2025-11-04 15:57:36.083 [main] INFO  o.example.controller.MenuController - Listando doações por status
+2025-11-04 15:57:36.092 [main] INFO  o.example.controller.MenuController - Iniciando distribuição de doações
+2025-11-04 15:57:36.106 [main] INFO  o.example.controller.MenuController - Distribuição concluída: 1 doações distribuídas
+2025-11-04 15:57:36.107 [main] INFO  o.example.controller.MenuController - Listando doações por status
+2025-11-04 15:57:36.110 [main] INFO  org.example.Main - Desligando serviço de notificação
+2025-11-04 15:57:36.111 [main] INFO  org.example.Main - Encerrando pool de conexões
+2025-11-04 15:57:36.111 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2025-11-04 15:57:36.130 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2025-11-04 15:57:36.131 [main] INFO  org.example.Main - Aplicação encerrada
+2025-11-04 16:25:16.553 [main] INFO  org.example.Main - Iniciando aplicação
+2025-11-04 16:25:16.576 [main] INFO  o.example.controller.MenuController - Iniciando sistema
+2025-11-04 16:25:16.579 [main] INFO  o.example.controller.MenuController - Iniciando cadastro de beneficiÃ¡rio
+2025-11-04 16:25:16.641 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-11-04 16:25:17.090 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@1e04fa0a
+2025-11-04 16:25:17.093 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-11-04 16:25:18.198 [main] INFO  o.example.controller.MenuController - BeneficiÃ¡rio cadastrado com sucesso: Beneficiario{id=2, nome='Benef 2', necessidade='Mochila', dataCadastro=2025-11-04T13:25:18}
+2025-11-04 16:25:18.199 [main] INFO  o.example.controller.MenuController - Iniciando registro de doaÃ§Ã£o
+2025-11-04 16:25:18.216 [main] INFO  o.example.controller.MenuController - DoaÃ§Ã£o registrada com sucesso: Doacao{id=2, doadorId=1, beneficiarioId=null, item='Livro', quantidade=1, status=PENDENTE}
+2025-11-04 16:25:18.216 [main] INFO  o.example.controller.MenuController - Listando Doações por Status
+2025-11-04 16:25:18.225 [main] INFO  o.example.controller.MenuController - Iniciando Distribuição de Doações
+2025-11-04 16:25:18.239 [main] INFO  o.example.controller.MenuController - Distribuição concluída: 1 doações distribuídas
+2025-11-04 16:25:18.239 [main] INFO  o.example.controller.MenuController - Listando Doações por Status
+2025-11-04 16:25:18.243 [main] INFO  o.example.controller.MenuController - Listando Doações por Status
+2025-11-04 16:25:18.246 [main] WARN  o.example.controller.MenuController - Erro de validação: No enum constant org.example.model.Doacao.Status.DISTRIBUÍDA
+2025-11-04 16:25:18.247 [main] INFO  org.example.Main - Desligando serviço de notificação
+2025-11-04 16:25:18.247 [main] INFO  org.example.Main - Encerrando pool de conexões
+2025-11-04 16:25:18.248 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2025-11-04 16:25:18.274 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2025-11-04 16:25:18.274 [main] INFO  org.example.Main - Aplicação encerrada
+2025-11-04 16:26:21.892 [main] INFO  org.example.Main - Iniciando aplicação
+2025-11-04 16:26:21.916 [main] INFO  o.example.controller.MenuController - Iniciando sistema
+2025-11-04 16:26:21.919 [main] INFO  o.example.controller.MenuController - Listando Doações por Status
+2025-11-04 16:26:21.987 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-11-04 16:26:22.458 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@4738a206
+2025-11-04 16:26:22.461 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-11-04 16:26:23.542 [main] WARN  o.example.controller.MenuController - Erro de validação: No enum constant org.example.model.Doacao.Status.DISTRIBUÍDA
+2025-11-04 16:26:23.543 [main] INFO  org.example.Main - Desligando serviço de notificação
+2025-11-04 16:26:23.543 [main] INFO  org.example.Main - Encerrando pool de conexões
+2025-11-04 16:26:23.543 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2025-11-04 16:26:23.561 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2025-11-04 16:26:23.561 [main] INFO  org.example.Main - Aplicação encerrada
+2025-11-04 16:26:58.758 [main] INFO  org.example.Main - Iniciando aplicação
+2025-11-04 16:26:58.781 [main] INFO  o.example.controller.MenuController - Iniciando sistema
+2025-11-04 16:26:58.784 [main] INFO  o.example.controller.MenuController - Listando Doações por Status
+2025-11-04 16:26:58.868 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-11-04 16:26:59.348 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@1de76cc7
+2025-11-04 16:26:59.353 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-11-04 16:27:00.497 [main] WARN  o.example.controller.MenuController - Erro de validação: No enum constant org.example.model.Doacao.Status.DISTRIBUÍDA
+2025-11-04 16:27:00.500 [main] INFO  org.example.Main - Desligando serviço de notificação
+2025-11-04 16:27:00.500 [main] INFO  org.example.Main - Encerrando pool de conexões
+2025-11-04 16:27:00.500 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2025-11-04 16:27:00.521 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2025-11-04 16:27:00.521 [main] INFO  org.example.Main - Aplicação encerrada
+2025-11-04 16:27:32.754 [main] INFO  org.example.Main - Iniciando aplicação
+2025-11-04 16:27:32.775 [main] INFO  o.example.controller.MenuController - Iniciando sistema
+2025-11-04 16:27:32.778 [main] INFO  o.example.controller.MenuController - Listando Doações por Status
+2025-11-04 16:27:32.853 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-11-04 16:27:33.306 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@1de76cc7
+2025-11-04 16:27:33.309 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-11-04 16:27:34.355 [main] WARN  o.example.controller.MenuController - Erro de validação: No enum constant org.example.model.Doacao.Status.DISTRIBUÍDA
+2025-11-04 16:27:34.356 [main] INFO  org.example.Main - Desligando serviço de notificação
+2025-11-04 16:27:34.356 [main] INFO  org.example.Main - Encerrando pool de conexões
+2025-11-04 16:27:34.356 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2025-11-04 16:27:34.375 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2025-11-04 16:27:34.375 [main] INFO  org.example.Main - Aplicação encerrada
+2025-11-04 16:28:21.894 [org.example.Main.main()] INFO  org.example.Main - Iniciando aplicação
+2025-11-04 16:28:21.935 [org.example.Main.main()] INFO  o.example.controller.MenuController - Iniciando sistema
+2025-11-04 16:28:23.699 [org.example.Main.main()] INFO  org.example.Main - Desligando serviço de notificação
+2025-11-04 16:28:23.699 [org.example.Main.main()] INFO  org.example.Main - Encerrando pool de conexões
+2025-11-04 16:28:23.705 [org.example.Main.main()] INFO  org.example.Main - Aplicação encerrada
